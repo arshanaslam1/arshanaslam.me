@@ -25,8 +25,8 @@ urlpatterns = [
 
     #path('blog/<int:pk>/all/posts', views.AuthorAllPostList.as_view(), name='author-all-post-list'),
     path('blog/<int:pk>/published/posts', views.AuthorPostPublishedList.as_view(), name='author-published-post-list'),
-    #path('blog/<int:pk>/pending/posts', views.AuthorPostPendingList.as_view(), name='author-pending-post-list'),
-    #path('blog/<int:pk>/draft/posts', views.AuthorPostDraftList.as_view(), name='author-draft-post-list'),
+    path('blog/<int:pk>/pending/posts', views.AuthorPostPendingList.as_view(), name='author-pending-post-list'),
+    path('blog/<int:pk>/draft/posts', views.AuthorPostDraftList.as_view(), name='author-draft-post-list'),
     path('tag/<slug:slug>/', views.TagPostView.as_view(), name='tag_post_list'),
     path('category/<slug:slug>/', views.CategoryPostListView.as_view(), name='category_post_list'),
     path('<slug:slug>/detail/', views.AuthorPostDetail.as_view(), name='author-post-detail'),
