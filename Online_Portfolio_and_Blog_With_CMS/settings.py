@@ -25,10 +25,11 @@ SECRET_KEY = 'django-insecure-oyomjq8d!##wlsdqs2n320o#$-k4l&x@sarhnj#olkr&9=0=ko
 DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1', 'www.arshanaslam.me']
-CORS_ALLOWED_ORIGINS = [
+CORS_ORIGIN_ALLOW_ALL = True
+"""CORS_ALLOWED_ORIGINS = [
     '127.0.0.1',
     'www.arshanaslam.me',
-]
+]"""
 
 
 
