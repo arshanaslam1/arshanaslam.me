@@ -3,7 +3,7 @@ from . import views
 
 urlpatterns = [
     path('<int:pk>/update/', views.AccountView.as_view(), name='account_update'),
-    path('signup/', views.AccountRegisterView.as_view(), name='register'),
+    #path('signup/', views.AccountRegisterView.as_view(), name='register'),
     path('login/', views.AccountLoginView.as_view(), name='login'),
     path('logout/', views.AccountLogoutView.as_view(), name='logout'),
     path('password-reset/', views.AccountPasswordResetView.as_view(), name='password_reset'),
