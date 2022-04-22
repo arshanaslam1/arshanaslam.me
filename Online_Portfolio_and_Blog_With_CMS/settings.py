@@ -97,7 +97,7 @@ AUTH_USER_MODEL = 'accounts.User'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
-USE_AWS_RDS = True
+USE_AWS_RDS = False
 if USE_AWS_RDS:
     DATABASES = {
         'default': {
@@ -167,7 +167,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 # S3
-USE_S3 = True
+USE_S3 = False
 if USE_S3:
     AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
     AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
