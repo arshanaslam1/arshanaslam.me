@@ -176,13 +176,7 @@
                           <a href='{% url 'post-create' %}' class="uk-button uk-button-primary yb-btn">Create</a>
                       </div>
                       <div class="uk-text-small uk-text-center uk-margin">
-                        <a href='{% url 'author-all-post-list' pk=user.id %}' class="uk-button uk-button-default yb-btn">Posts</a>
-                    </div>
-                      <div class="uk-text-small uk-text-center uk-margin">
                         <a href='{% url 'author-published-post-list' pk=user.id %}' class="uk-button uk-button-default yb-btn">Published</a>
-                    </div>
-                    <div class="uk-text-small uk-text-center uk-margin">
-                        <a href='{% url 'author-pending-post-list' pk=user.id %}' class="uk-button uk-button-default yb-btn">Pending</a>
                     </div>
                     <div class="uk-text-small uk-text-center uk-margin">
                         <a href='{% url 'author-draft-post-list' pk=user.id %}' class="uk-button uk-button-default yb-btn">Draft</a>
