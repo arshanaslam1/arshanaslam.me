@@ -98,8 +98,20 @@ AUTH_USER_MODEL = 'accounts.User'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
-USE_AWS_RDS = True
-if USE_AWS_RDS:
+# at single time one is true and other all false or both are false.
+USE_AZURE_RDS = True
+USE_AWS_RDS = False
+if USE_AZURE_RDS:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME':  os.environ.get('DATABASE_NAME'),
+            'USER': os.environ.get('DATABASE_USER'),
+            'PASSWORD': os.environ.get('DATABASE_PASSWORD'),
+            'HOST': os.environ.get('DATABASE_HOST'),
+        }
+    }
+elif USE_AWS_RDS:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.mysql',
@@ -117,6 +129,7 @@ else:
             'NAME': BASE_DIR / 'db.sqlite3',
         }
     }
+
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
@@ -167,9 +180,24 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 
-# S3
-USE_S3 = True
-if USE_S3:
+# at single time one is true and other all false or both are false.
+AZURE_BLOB = True
+USE_S3 = False
+if AZURE_BLOB:
+    # AZURE_ACCOUNT_NAME = os.environ.get('AZURE_ACCOUNT_NAME')
+    # AZURE_CUSTOM_DOMAIN = '%s.blob.core.windows.net' % AZURE_ACCOUNT_NAME
+    AZURE_CUSTOM_DOMAIN = os.environ.get('AZURE_CUSTOM_DOMAIN')
+    AZURE_CONNECTION_STRING = os.environ.get('AZURE_CONNECTION_STRING')
+    AZURE_SSL = True
+
+    STATICFILES_LOCATION = 'static'
+    STATICFILES_STORAGE = 'Online_Portfolio_and_Blog_With_CMS.azure.utils.AzureStaticStorage'
+    STATIC_URL = 'https://{}/{}/'.format(AZURE_CUSTOM_DOMAIN, STATICFILES_LOCATION)
+
+    MEDIAFILES_LOCATION = 'media'
+    DEFAULT_FILE_STORAGE = 'Online_Portfolio_and_Blog_With_CMS.azure.utils.AzureMediaStorage'
+    MEDIA_URL = 'htts://{}/{}/'.format(AZURE_CUSTOM_DOMAIN, MEDIAFILES_LOCATION)
+elif USE_S3:
     AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
     AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
     AWS_STORAGE_BUCKET_NAME = os.environ.get('AWS_STORAGE_BUCKET_NAME')
